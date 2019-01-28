@@ -1,16 +1,13 @@
 package com.pingansec.processor;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-
-import com.pingansec.bean.excel.HljShop;
-import com.pingansec.bean.excel.SqShopData;
-import com.pingansec.bean.excel.WebSiteInfo;
+import com.pingansec.bean.excel.CompanyAndSiteInfo;
 import com.pingansec.db.JdbcHelper;
 import com.pingansec.handler.DbHandler;
 import com.pingansec.handler.imp.DefaultInsertDbHandler;
 import com.pingansec.utils.XLSXToCSV;
+import org.slf4j.Logger;
+
+import java.util.List;
 
 public class ImportExcelToDbProcessor implements Processor{
 	
@@ -19,9 +16,12 @@ public class ImportExcelToDbProcessor implements Processor{
 	public static final int THREAD_SIZE = 10;
 
 	public Object process(String[] args) {
-		String filePath = "C:\\Users\\JOKING\\Desktop\\桌面\\pingan\\aic\\江苏\\宿迁\\宿迁工商\\网站1.CSV";
-		Class<SqShopData> beanClass = SqShopData.class;
+		String filePath = "C:\\Users\\JOKING\\Desktop\\cs_data.xlsx";
+		Class<CompanyAndSiteInfo> beanClass = CompanyAndSiteInfo.class;
 		Class<JdbcHelper> dbHelperClass = JdbcHelper.class;
+/*		String filePath = "C:\\Users\\JOKING\\Desktop\\桌面\\pingan\\aic\\江苏\\宿迁\\宿迁工商\\网站1.CSV";
+		Class<SqShopData> beanClass = SqShopData.class;
+		Class<JdbcHelper> dbHelperClass = JdbcHelper.class;*/
 /*		String filePath = "C:\\Users\\JOKING\\Desktop\\桌面\\pingan\\aic\\总局\\黑龙江\\黑龙江核查网站-0716.xlsx";
 		Class<HljShop> beanClass = HljShop.class;
 		Class<JdbcHelper> dbHelperClass = JdbcHelper.class;
@@ -51,7 +51,7 @@ public class ImportExcelToDbProcessor implements Processor{
 			int length = data == null ? 0 : data.size();
 			log.info("读取到数据条数：" + length);
 			DbHandler dbHandler = new DefaultInsertDbHandler(beanClass, dbHelperClass);
-			boolean result = dbHandler.createTableAndInsertData(data, false, THREAD_SIZE);
+			boolean result = dbHandler.createTableAndInsertData(data, true, THREAD_SIZE);
 			
 		} catch (Exception e) {
 			log.error(String.format("processor exception : [%s]", e.getMessage()));

@@ -5,6 +5,18 @@
 	<groupId>com.pingansec</groupId>
 	<artifactId>data-util</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+<!-- 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>6</source>
+					<target>6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build> -->
 
 
 	<properties>
@@ -164,7 +176,7 @@
 
 	</dependencies>
 
-	<!-- <build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -172,20 +184,20 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-					 指定运行主类
+					<!-- &lt;!&ndash;指定运行主类&ndash;&gt;
 					<archive>
 						<manifest>
 							<mainClass>com.pingansec.processor.ImportExcelToDbProcessor</mainClass>
 							<addClassPath>true</addClassPath>
 							<classpathPrefix>lib/</classpathPrefix>
 						</manifest>
-					</archive>
-					指明编译源代码时使用的字符编码， maven编译的时候默认使用的GBK编码， 
+					</archive>-->
+					<!--指明编译源代码时使用的字符编码， maven编译的时候默认使用的GBK编码，
 					通过encoding属性设置字符编码， 告诉maven这个项目使用UTF-8来编译
-					<encoding>utf8</encoding>
+-->					<encoding>utf8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
-	</build> -->
+	</build>
 	
 </project>
